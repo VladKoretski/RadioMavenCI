@@ -27,7 +27,7 @@ public class Radio {
         currentRadioStation = radioStation;
     }
 
-    public void setNextRadioStation() {
+    public void next() {
         if (currentRadioStation == maxRadioStationNumber) {
             currentRadioStation = minRadioStationNumber;
         } else {
@@ -35,7 +35,7 @@ public class Radio {
         }
     }
 
-    public void setPrevRadioStation() {
+    public void prev() {
         if (currentRadioStation == minRadioStationNumber) {
             currentRadioStation = maxRadioStationNumber;
         } else {
