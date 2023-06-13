@@ -37,7 +37,7 @@ public class RadioTest {
             "1, 2"
     })
 
-    public void shouldSetNextRadioStation (int currentStation, int expected) {
+    public void shouldSetNextRadioStation(int currentStation, int expected) {
         Radio radio = new Radio();
         radio.setNewRadioStation(currentStation);
         radio.next();
@@ -56,7 +56,7 @@ public class RadioTest {
             "8, 7"
     })
 
-    public void shouldSetPrevRadioStation (int currentStation, int expected) {
+    public void shouldSetPrevRadioStation(int currentStation, int expected) {
         Radio radio = new Radio();
         radio.setNewRadioStation(currentStation);
         radio.prev();
@@ -78,7 +78,8 @@ public class RadioTest {
             "-1, 0",
             "1, 1"
     })
-    public void shouldSetNewVolume (int newVolume, int expected){
+
+    public void shouldSetNewVolume(int newVolume, int expected) {
         Radio radio = new Radio();
         radio.setNewVolume(newVolume);
         int actual = radio.getCurrentVolume();
@@ -88,7 +89,7 @@ public class RadioTest {
 
     //Тестирование getCurrentVolume на значение по умолчанию
     @Test
-    public void shouldGetCurrentVolume (){
+    public void shouldGetCurrentVolume() {
         Radio radio = new Radio();
         int expected = 0;
         int actual = radio.getCurrentVolume();
@@ -105,7 +106,8 @@ public class RadioTest {
             "99, 100",
             "100, 100"
     })
-    public void shouldSetVolumeOnePointUp (int currentVolume, int expected){
+
+    public void shouldSetVolumeOnePointUp(int currentVolume, int expected) {
         Radio radio = new Radio();
         radio.setNewVolume(currentVolume);
         radio.setVolumeUpOnePointUp();
@@ -123,7 +125,8 @@ public class RadioTest {
             "99, 98",
             "100, 99"
     })
-    public void shouldSetVolumeOnePointDown (int currentVolume, int expected){
+
+    public void shouldSetVolumeOnePointDown(int currentVolume, int expected) {
         Radio radio = new Radio();
         radio.setNewVolume(currentVolume);
         radio.setVolumeOnePointDown();

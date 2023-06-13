@@ -14,6 +14,7 @@ public class Radio {
 
     // Методы выбора номера станции
     public int getCurrentRadioStation() {
+
         return currentRadioStation;
     }
 
@@ -30,17 +31,13 @@ public class Radio {
     public void next() {
         if (currentRadioStation == maxRadioStationNumber) {
             currentRadioStation = minRadioStationNumber;
-        } else {
-            currentRadioStation = currentRadioStation + 1;
-        }
+        } else currentRadioStation = currentRadioStation + 1;
     }
 
     public void prev() {
         if (currentRadioStation == minRadioStationNumber) {
             currentRadioStation = maxRadioStationNumber;
-        } else {
-            currentRadioStation = currentRadioStation - 1;
-        }
+        } else currentRadioStation = currentRadioStation - 1;
     }
 
     // Методы установки громкости
@@ -52,10 +49,11 @@ public class Radio {
         if (newVolume < minVolumeOfTheRadio) {
             return;
         }
-        if (newVolume>maxVolumeOfTheRadio) {
-        return;}
-        currentVolumeOfTheRadio = newVolume;
+        if (newVolume > maxVolumeOfTheRadio) {
+            return;
         }
+        currentVolumeOfTheRadio = newVolume;
+    }
 
     public void setVolumeUpOnePointUp() {
         if (currentVolumeOfTheRadio == maxVolumeOfTheRadio) {
