@@ -63,6 +63,7 @@ public class RadioTest {
     })
 
     public void shouldSetNextRadioStation(int currentStation, int expected) {
+
         Radio radio = new Radio(10);
         radio.setNewRadioStation(currentStation);
         radio.next();
@@ -82,6 +83,7 @@ public class RadioTest {
     })
 
     public void shouldSetPrevRadioStation(int currentStation, int expected) {
+
         Radio radio = new Radio(10);
         radio.setNewRadioStation(currentStation);
         radio.prev();
@@ -141,6 +143,7 @@ public class RadioTest {
     })
 
     public void shouldSetNewVolume(int newVolume, int expected) {
+
         Radio radio = new Radio(10);
         radio.setNewVolume(newVolume);
         int actual = radio.getCurrentVolumeOfTheRadio();
@@ -151,6 +154,7 @@ public class RadioTest {
     //Тестирование getCurrentVolume на значение по умолчанию
     @Test
     public void shouldGetCurrentVolume() {
+
         Radio radio = new Radio(10);
         int expected = 0;
         int actual = radio.getCurrentVolumeOfTheRadio();
@@ -169,6 +173,7 @@ public class RadioTest {
     })
 
     public void shouldSetVolumeOnePointUp(int currentVolume, int expected) {
+
         Radio radio = new Radio(10);
         radio.setNewVolume(currentVolume);
         radio.setVolumeUpOnePointUp();
