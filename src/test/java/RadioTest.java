@@ -5,6 +5,31 @@ import org.junit.jupiter.params.provider.CsvSource;
 import ru.netology.Radio;
 
 public class RadioTest {
+// Тестирование конструктов
+
+    @Test
+    public void shouldCheckOneParameterConstructor() {
+        Radio radio = new Radio(15);
+
+        Assertions.assertEquals(0, radio.getMinRadioStationNumber());
+        Assertions.assertEquals(14, radio.getMaxRadioStationNumber());
+        Assertions.assertEquals(0, radio.getCurrentRadioStation());
+        Assertions.assertEquals(0, radio.getMinVolumeOfTheRadio());
+        Assertions.assertEquals(100, radio.getMaxVolumeOfTheRadio());
+        Assertions.assertEquals(0, radio.getCurrentVolumeOfTheRadio());
+    }
+
+    @Test
+    public void shouldCheckOutTheDefaultDataConstructor() {
+        Radio radio = new Radio();
+        Assertions.assertEquals(0, radio.getMinRadioStationNumber());
+        Assertions.assertEquals(9, radio.getMaxRadioStationNumber());
+        Assertions.assertEquals(0, radio.getCurrentRadioStation());
+        Assertions.assertEquals(0, radio.getMinVolumeOfTheRadio());
+        Assertions.assertEquals(100, radio.getMaxVolumeOfTheRadio());
+        Assertions.assertEquals(0, radio.getCurrentVolumeOfTheRadio());
+    }
+
 
     //Тестирование методов выбора станции
     //Тестирование метода установки новой станции:
@@ -20,8 +45,7 @@ public class RadioTest {
     })
 
     public void shouldSetRadioStation(int newRadioStation, int expected) {
-        Radio radio = new Radio();
-        
+        Radio radio = new Radio(10);
         radio.setNewRadioStation(newRadioStation);
         int actual = radio.getCurrentRadioStation();
 
@@ -39,8 +63,8 @@ public class RadioTest {
     })
 
     public void shouldSetNextRadioStation(int currentStation, int expected) {
-        Radio radio = new Radio();
-        
+
+        Radio radio = new Radio(10);
         radio.setNewRadioStation(currentStation);
         radio.next();
         int actual = radio.getCurrentRadioStation();
@@ -59,14 +83,50 @@ public class RadioTest {
     })
 
     public void shouldSetPrevRadioStation(int currentStation, int expected) {
-        Radio radio = new Radio();
-        
+
+        Radio radio = new Radio(10);
         radio.setNewRadioStation(currentStation);
         radio.prev();
         int actual = radio.getCurrentRadioStation();
 
         Assertions.assertEquals(actual, expected);
     }
+
+    @ParameterizedTest
+    @CsvSource({
+            "4, 5",
+            "13, 14",
+            "14, 0",
+            "0, 1",
+            "1, 2"
+    })
+
+    public void shouldSetNextRadioStationIf15RadioStations(int currentStation, int expected) {
+        Radio radio = new Radio(15);
+        radio.setNewRadioStation(currentStation);
+        radio.next();
+        int actual = radio.getCurrentRadioStation();
+
+        Assertions.assertEquals(actual, expected);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "4, 3",
+            "14, 13",
+            "0, 14",
+            "1, 0",
+    })
+
+    public void shouldSetPrevRadioStationif15RadioStations(int currentStation, int expected) {
+        Radio radio = new Radio(15);
+        radio.setNewRadioStation(currentStation);
+        radio.prev();
+        int actual = radio.getCurrentRadioStation();
+
+        Assertions.assertEquals(actual, expected);
+    }
+
 
     //Тестирование методов громкости
     //Тестирования метода установки громкости - служебного метода для дальнейшего тестирования
@@ -83,10 +143,10 @@ public class RadioTest {
     })
 
     public void shouldSetNewVolume(int newVolume, int expected) {
-        Radio radio = new Radio();
-        
+
+        Radio radio = new Radio(10);
         radio.setNewVolume(newVolume);
-        int actual = radio.getCurrentVolume();
+        int actual = radio.getCurrentVolumeOfTheRadio();
 
         Assertions.assertEquals(actual, expected);
     }
@@ -94,10 +154,10 @@ public class RadioTest {
     //Тестирование getCurrentVolume на значение по умолчанию
     @Test
     public void shouldGetCurrentVolume() {
-        Radio radio = new Radio();
-        
+
+        Radio radio = new Radio(10);
         int expected = 0;
-        int actual = radio.getCurrentVolume();
+        int actual = radio.getCurrentVolumeOfTheRadio();
 
         Assertions.assertEquals(expected, actual);
     }
@@ -113,11 +173,11 @@ public class RadioTest {
     })
 
     public void shouldSetVolumeOnePointUp(int currentVolume, int expected) {
-        Radio radio = new Radio();
-        
+
+        Radio radio = new Radio(10);
         radio.setNewVolume(currentVolume);
         radio.setVolumeUpOnePointUp();
-        int actual = radio.getCurrentVolume();
+        int actual = radio.getCurrentVolumeOfTheRadio();
 
         Assertions.assertEquals(expected, actual);
     }
@@ -133,11 +193,10 @@ public class RadioTest {
     })
 
     public void shouldSetVolumeOnePointDown(int currentVolume, int expected) {
-        Radio radio = new Radio();
-        
+        Radio radio = new Radio(10);
         radio.setNewVolume(currentVolume);
         radio.setVolumeOnePointDown();
-        int actual = radio.getCurrentVolume();
+        int actual = radio.getCurrentVolumeOfTheRadio();
 
         Assertions.assertEquals(expected, actual);
     }
