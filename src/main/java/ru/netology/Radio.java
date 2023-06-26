@@ -3,21 +3,57 @@ package ru.netology;
 public class Radio {
 
     // Данные номера радиостанции
-    int currentRadioStation;
-    int minRadioStationNumber = 0;
-    int maxRadioStationNumber = 9;
-
+    private final int minRadioStationNumber = 0;
     // Данные громкости звука
-    int currentVolumeOfTheRadio;
-    int minVolumeOfTheRadio = 0;
-    int maxVolumeOfTheRadio = 100;
+    private final int minVolumeOfTheRadio = 0;
+    private final int maxVolumeOfTheRadio = 100;
+    private int maxRadioStationNumber = 9;
+    private int currentRadioStation = minRadioStationNumber;
+    private int currentVolumeOfTheRadio = minVolumeOfTheRadio;
 
-    // Методы выбора номера станции
+    // конструктор радио по умолчанию
+    public Radio() {
+    }
+
+    // конструктор customized radio
+    public Radio(int RangeOfStations) {
+
+        this.maxRadioStationNumber = minRadioStationNumber + RangeOfStations - 1;
+    }
+
+    //геттеры класса радио - номер радиостанции
+    public int getMinRadioStationNumber() {
+
+        return minRadioStationNumber;
+    }
+
+    public int getMaxRadioStationNumber() {
+
+        return maxRadioStationNumber;
+    }
+
     public int getCurrentRadioStation() {
 
         return currentRadioStation;
     }
 
+    //геттеры класса радио - уровень звука
+    public int getMinVolumeOfTheRadio() {
+
+        return minRadioStationNumber;
+    }
+
+    public int getMaxVolumeOfTheRadio() {
+
+        return maxVolumeOfTheRadio;
+    }
+
+    public int getCurrentVolumeOfTheRadio() {
+
+        return currentVolumeOfTheRadio;
+    }
+
+    // Методы выбора номера станции
     public void setNewRadioStation(int radioStation) {
         if (radioStation < minRadioStationNumber) {
             return;
@@ -41,9 +77,6 @@ public class Radio {
     }
 
     // Методы установки громкости
-    public int getCurrentVolume() {
-        return currentVolumeOfTheRadio;
-    }
 
     public void setNewVolume(int newVolume) {
         if (newVolume < minVolumeOfTheRadio) {
