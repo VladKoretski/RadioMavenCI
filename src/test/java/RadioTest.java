@@ -24,9 +24,9 @@ public class RadioTest {
         
         radio.setNewRadioStation(newRadioStation);
         int actual = radio.getCurrentRadioStation();
-        int expect1=100;
+     //   int expect1=100;
 
-        Assertions.assertEquals(expect1, actual);
+        Assertions.assertEquals(expected, actual);
     }
 
     //Тестирование метода пролистования станций Next с граничными условиями:
